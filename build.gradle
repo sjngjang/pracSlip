@@ -30,9 +30,12 @@ dependencies {
 	// Security
 	//compile('org.springframework.boot:spring-boot-starter-security')
 	
+	// Lombok
+	compileOnly('org.projectlombok:lombok')
+	
 	// log back conditional dependencies
 	compile("org.codehaus.janino:janino:3.0.7")
-	
+
 	// Web css, js, template
 	compile('org.webjars:bootstrap:3.3.7-1')
 	compile('org.webjars.bower:jquery:3.2.1')

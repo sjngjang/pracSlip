@@ -2,6 +2,7 @@
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
 	<include resource="org/springframework/boot/logging/logback/base.xml"/>
 
+
     <springProfile name="dev,staging">
         <logger name="net.sj.slipp" level="DEBUG"  additivity="false">
             <appender-ref ref="CONSOLE" />
