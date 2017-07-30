@@ -23,20 +23,33 @@ public class UserController {
 		return "index";
 	} 
 	
+	@GetMapping("/user/form")
+	public String showSinginForm() {
+		logger.debug("Go to login page");
+		return "/user/form";
+	} 
+	
+	@GetMapping("/user/login")
+	public String showLoginForm() {
+		logger.debug("Go to login page");
+		return "/user/login";
+	} 
+	
+	
 	@PostMapping("/signin")
 	public String addUser(User user) {
 		logger.debug("Go to sign-in form");
 		logger.debug("Sended user info {}", user);
 		
 		users.add(user);
-		return "redirect:/list";
+		return "redirect:/user/list";
 	} 
 	
-	@GetMapping("/list")
+	@GetMapping("/user/list")
 	public String showUserList(Model model){
 		logger.debug("Show user list");
 		model.addAttribute("users", users);
-		return "list";
+		return "/user/list";
 	}
 	
 }
