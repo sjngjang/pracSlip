@@ -26,12 +26,20 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [" 
+				+ "id=" + id 
+				+ "userId=" + userId 
 				+ "userId=" + userId 
 				+ ", password=" + password 
 				+ ", userName=" + userName 
 				+ ", email=" + email
 				+ "]";
 	}
-	
+
+
+	public void update(User updatedUser) {
+		this.userName=updatedUser.userName;
+		this.password=updatedUser.password;
+		this.email=updatedUser.email;
+	}
 	
 }

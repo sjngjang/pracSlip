@@ -81,10 +81,10 @@ public class WebAppContext extends WebMvcConfigurerAdapter{
 		return exceptionResolver;
 	}*/
 	
-/*	 @Override
+	 @Override
 	    public void addInterceptors(InterceptorRegistry registry){
 	        registry.addInterceptor(new WebAppCustomIntercepter()).addPathPatterns("/**");
-	}*/
+	}
 	
 	// Conversion and Formatting of date and number
 }

@@ -8,6 +8,6 @@ public interface UserService {
 
 	public List<User> findAll();
 	public void addNewUser(User newUser);
-
-
+	public User findById(Long id);
+	public void updateById(Long id, User updatedUser);
 }

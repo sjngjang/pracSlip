@@ -36,5 +36,24 @@ public class RepositoryUserService implements UserService{
 		repository.save(newUser);
 	}
 	
+	@Override
+	public User findById(Long id){
+		
+		User user = repository.findOne(id);
+		logger.debug("Found a user info with id in repository: {}", id, user);
+		
+		return user;
+	}
+	
+	@Override
+	public void updateById(Long id,User updatedUser) {
+		logger.debug("finding user with id to update:", id);
+		User user=repository.findOne(id);
+		logger.debug("finded a user: {}", user);
+		
+		user.update(updatedUser);
+		logger.debug("updated userr: {}", user);
+		repository.save(user);
+	}
 	
 }
