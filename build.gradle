@@ -1,3 +1,4 @@
+
 buildscript {
 	ext {
 		springBootVersion = '1.5.4.RELEASE'
@@ -7,15 +8,30 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('se.transmode.gradle:gradle-docker:1.2')
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+apply plugin: 'docker'
 
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+compileJava {
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+	mainClassName ="net.sj.slipp.SLiPPpracApplication"
+}
+
+jar {
+	group = 'sjngjang'
+	baseName='pracslip'
+	version = '0.0.1-SNAPSHOT'
+	manifest { attributes "Main-Class": "net.sj.slipp.SLiPPpracApplication" }
+}
+
 
 repositories {
 	mavenCentral()
