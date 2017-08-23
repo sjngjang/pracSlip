@@ -37,6 +37,16 @@ repositories {
 	mavenCentral()
 }
 
+task buildDocker(type:Docker, dependsOn: build) {
+	applicationName=jar.baseName
+	dockerfile = file ('Dockerfile')
+	doFirst {
+		copy {
+			from jar
+			into "${stageDir}/target"
+		}
+	}
+}
 
 dependencies {
 	// data jpa 설정
