@@ -38,10 +38,13 @@ repositories {
 }
 
 task buildDocker(type:Docker, dependsOn: build) {
+	if (project.hasProperty('dockerPath')) {
+		dockerBinary = project.dockerPath + "/docker"
+	}
 	applicationName=jar.baseName
-	dockerfile = file ('Dockerfile')
-	doFirst {
-		copy {
+		dockerfile = file ('Dockerfile')
+		doFirst {
+			copy {
 			from jar
 			into "${stageDir}/target"
 		}
