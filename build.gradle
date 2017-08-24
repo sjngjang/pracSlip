@@ -37,18 +37,14 @@ repositories {
 	mavenCentral()
 }
 
-task buildDocker(type:Docker, dependsOn: build) {
-	if (project.hasProperty('dockerPath')) {
-		dockerBinary = project.dockerPath + "/docker"
-	}
-	applicationName=jar.baseName
-		dockerfile = file ('Dockerfile')
-		doFirst {
-			copy {
-			from jar
-			into "${stageDir}/target"
-		}
-	}
+distDocker {
+	exposePort 8080
+	setEnvironment 'JAVA_OPTS', '-Dspring.profiles.active=docker'
+}
+
+docker {
+	maintainer = 'Laura Jang <sjngjang@gmail.com>'
+	baseImage = 'java:8'
 }
 
 dependencies {
