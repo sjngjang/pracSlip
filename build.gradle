@@ -35,17 +35,8 @@ jar {
 
 repositories {
 	mavenCentral()
-}
 
-distDocker {
-	exposePort 8080
-	setEnvironment 'JAVA_OPTS', '-Dspring.profiles.active=docker'
-}
 
-docker {
-	maintainer = 'Laura Jang <sjngjang@gmail.com>'
-	baseImage = 'java:8'
-}
 
 dependencies {
 	// data jpa 설정
