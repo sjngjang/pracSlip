@@ -1,5 +1,5 @@
 FROM java:openjdk-8
-EXPOSE 8080
-RUN mkdir -p /app/
-ADD build/libs/pracslip-0.0.1-SNAPSHOT.jar /app/pracslip.jar
-ENTRYPOINT ["java", "-jar", "/app/pracslip.jar"]
+VOLUME /tmp
+ADD pracslip-0.0.1-SNAPSHOT.jar app.jar
+RUN bash -c 'touch /app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
