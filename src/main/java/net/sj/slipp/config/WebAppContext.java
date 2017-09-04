@@ -25,18 +25,18 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 public class WebAppContext extends WebMvcConfigurerAdapter{
 	
-/*	protected static final String PROPERTY_NAME_MVC_VIEW_PREFIX="spring.mvc.view.prefix";
-	protected static final String PROPERTY_NAME_MVC_VIEW_SUEFIX="spring.mvc.view.suffix";
+	protected static final String PROPERTY_NAME_MVC_VIEW_PREFIX="spring.mustache.prefix";
+	protected static final String PROPERTY_NAME_MVC_VIEW_SUEFIX="spring.mustache.suffix";
 	
 	@Resource
 	private Environment env;
-*/	
+
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){
 		configurer.enable();
 	}
 	
-/*	@Bean
+@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		
@@ -45,7 +45,7 @@ public class WebAppContext extends WebMvcConfigurerAdapter{
 		viewResolver.setSuffix(env.getRequiredProperty(PROPERTY_NAME_MVC_VIEW_SUEFIX));
 		
 		return viewResolver;
-	}*/
+	}
 	
 	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = { "classpath:/static/" };
 
