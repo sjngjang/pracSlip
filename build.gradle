@@ -35,7 +35,7 @@ repositories {
 
 task buildDocker(type: Docker, dependsOn: build) {
 	push=false
-	applictionName=jar.baseName
+	applicationName=jar.baseName
 	tagVersion = jar.version
 	dockerfile = file ('Dockerfile')
 	doFirst {
