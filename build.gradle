@@ -13,7 +13,6 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'application'
 apply plugin: 'docker'
@@ -21,14 +20,12 @@ apply plugin: 'docker'
 compileJava {
 	sourceCompatibility = 1.8
 	targetCompatibility = 1.8
-	mainClassName ="net.sj.slipp.SLiPPpracApplication"
 }
 
 jar {
 	group = 'sjngjang'
 	baseName='pracslip'
 	version = '0.0.1-SNAPSHOT'
-	manifest { attributes "Main-Class": "net.sj.slipp.SLiPPpracApplication" }
 }
 
 
@@ -36,6 +33,18 @@ repositories {
 	mavenCentral()
 }
 
+task buildDocker(type: Docker, dependsOn: build) {
+	push=false
+	applictionName=jar.baseName
+	tagVersion = jar.version
+	dockerfile = file ('Dockerfile')
+	doFirst {
+		copy {
+			from jar
+			into stageDir
+		}
+	}
+}
 
 dependencies {
 	// data jpa 설정
